@@ -1,0 +1,13 @@
+#!/bin/bash
+
+local_storage_location="/etc/local.konteiner.sh"
+terraform_plugin_location="${local_storage_location}/terraform-plugins"
+host_variables="${local_storage_location}/host-variables.tfvars"
+api_variables="${local_storage_location}/api-variables.tfvars"
+branch_name=`git rev-parse --abbrev-ref HEAD`
+orchestration=$1
+driver=$2
+
+terraform init -plugin-dir $terraform_plugin_location terraform/$orchestration
+terraform get terraform/$orchestration
+terraform apply -var "rancher_environment_name=$branch_name" -var "driver=$driver" -var "orchestration=$orchestration" -var-file=$api_variables -var-file=$host_variables -state-out="${local_storage_location}/branch_name.tfstate" terraform/$orchestration
