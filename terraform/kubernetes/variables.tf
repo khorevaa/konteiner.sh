@@ -46,16 +46,16 @@ locals {
       ami = "${var.amazonec2-ami}" 
       region = "${var.amazonec2-region}" 
       blockDurationMinutes = "${var.amazonec2-block-duration-minutes}" 
-      deviceNamee = "${var.amazonec2-device-name}" 
+      deviceName = "${var.amazonec2-device-name}" 
       retries = "${var.amazonec2-retries}" 
       rootSize = "${var.amazonec2-root-size}" 
       securityGroup = "${var.amazonec2-security-group}" 
       spotPrice = "${var.amazonec2-spot-price}" 
       sshUser = "${var.amazonec2-ssh-user}" 
-      volumeTyype = "${var.amazonec2-volume-type}" 
+      volumeType = "${var.amazonec2-volume-type}" 
       vpcId = "${var.amazonec2-vpc-id}" 
       zone = "${var.amazonec2-zone}"
-      instanceYype = "${var.amazonec2-instance-type}"
+      instanceType = "${var.amazonec2-instance-type}"
      }
   }
 
