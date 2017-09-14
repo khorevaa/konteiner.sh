@@ -3,7 +3,7 @@
 local_storage_location="/etc/local.konteiner.sh"
 terraform_plugin_location="${local_storage_location}/terraform-plugins"
 host_variables="${local_storage_location}/host-variables.tfvars"
-api_variables="${local_storage_location}/api-variables.tfvars"
+secrets="${local_storage_location}/secrets.tfvars"
 branch_name=`git rev-parse --abbrev-ref HEAD`
 orchestration=$1
 driver=$2
