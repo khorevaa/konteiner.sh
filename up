@@ -10,4 +10,4 @@ driver=$2
 
 terraform init -plugin-dir $terraform_plugin_location rancher
 terraform get rancher
-terraform apply -var "rancher_environment_name=$branch_name" -var "driver=$driver" -var "orchestration=$orchestration" -var-file=$api_variables -var-file=$host_variables -state-out="${local_storage_location}/$branch_name.tfstate" rancher
+terraform apply -var "rancher_environment_name=$branch_name" -var "driver=$driver" -var "orchestration=$orchestration" -var-file=$secrets -var-file=$host_variables -state-out="${local_storage_location}/$branch_name.tfstate" rancher

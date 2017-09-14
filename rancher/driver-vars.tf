@@ -1,4 +1,4 @@
-variable "digitalocean_accesstoken" { default {} }
+variable "digitalocean_accesstoken" { default = "" }
 variable "droplet_count" { default = 2 }
 variable "droplet_image" { default = "rancheros" }
 variable "digitalocean_region" { default = "fra1" }

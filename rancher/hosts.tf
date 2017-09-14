@@ -11,4 +11,9 @@ module "kubernetes-compute" {
 }
 */
 
-
+module "rune-host" {
+  source = "../modules/rancher/host"
+  driver_config = "${local.driver_config}"
+  global_host_config = "${local.global_host_config}"
+  hostname = "rune"
+}
