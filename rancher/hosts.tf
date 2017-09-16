@@ -2,8 +2,9 @@
   
 module "kubernetes-compute" {
   source = "../modules/rancher/host"
-  driver_config = "${local.driver_config}"
-  global_host_config = "${local.global_host_config}"
+  environment_vars = "${local.environment_vars}$" 
+  external_driver_vars = "${local.external_driver_vars}"
+  drivers = ["amazonec2", "digitalocean"]
   hostname = "compute"
   host_labels {
     compute = "true"
