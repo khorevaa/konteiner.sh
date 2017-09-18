@@ -1,0 +1,48 @@
+-- hosts.tf:
+
+module "kubernetes-compute" {
+  source = "../modules/rancher/host"
+  environment_id = "${rancher_environment.environment.id}"
+  external_driver_vars = "${local.external_driver_vars}"
+  drivers = ["amazonec2", "digitalocean"]
+  hostname = "compute"
+  host_labels {
+    compute = "true"
+  }
+}
+
+
+-- stacks.tf:
+
+User stack:
+
+module "user-stacks" {
+  source = "../modules/rancher/stack"
+  environment_id = "${rancher_environment.environment.id}"
+  stack_names = ["prometheus"]
+}
+
+Infrastructure stack (because of scope = 'system'):
+
+module "nfs-storage" {
+  source = "../modules/rancher/stack"
+  environment_id = "${rancher_environment.environment.id}"
+  stack_names = ["nfs"]
+  scope = "system"
+}
+
+Multiple stack names can be supplie in "stack_names" variable
+
+Config files will be fetched from "stack-config/<stack name>/docker-compose.yml" and "stack-config/<stack name>/rancher-compose.yml"
+
+
+-- volumes.tf:
+
+module "nfs-volumes" {
+  source = "../modules/rancher/volume"
+  volume_names = ["mysql", "elasticsearch", "activemq"]
+  storage_driver = "rancher-nfs"
+  environment_id = "${rancher_environment.environment.id}"
+  storage_stack_name = "${module.nfs-storage.name}"
+}
+

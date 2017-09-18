@@ -23,7 +23,7 @@ variable "amazonec2-vpc-id" { default = "" }
 variable "amazonec2-zone" { default = "a" }
 variable "amazonec2-instance-type" { default = "t2.small" }
 
-variable "environment_vars" { type = "map" }
+variable "environment_id" {}
 variable "external_driver_vars" { type = "map" }
 variable "drivers" { type = "list" }
 
