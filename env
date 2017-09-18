@@ -6,9 +6,9 @@ host_variables="${local_storage_location}/host-variables.tfvars"
 secrets="${local_storage_location}/secrets.tfvars"
 branch_name=`git rev-parse --abbrev-ref HEAD`
 state_file="${local_storage_location}/$branch_name.tfstate"
-orchestration=$1
-driver=$2
+orchestration=$2
+driver=$3
 
 terraform init -plugin-dir $terraform_plugin_location rancher
 terraform get rancher
-terraform apply -var "rancher_environment_name=$branch_name" -var "driver=$driver" -var "orchestration=$orchestration" -var-file=$secrets -var-file=$host_variables -state=$state_file -state-out=$state_file rancher
+terraform $1 -var "rancher_environment_name=$branch_name" -var "driver=$driver" -var "orchestration=$orchestration" -var-file=$secrets -var-file=$host_variables -state=$state_file -state-out=$state_file rancher

@@ -5,7 +5,7 @@ variable "rancher_environment_name" {}
 variable "rancher_environment_member_id" {}
 variable "rancher_environment_member_type" {}
 variable "rancher_environment_member_role" {}
-variable "orchestration" {}
+variable "orchestration" { default = "cattle" }
 
 
 
