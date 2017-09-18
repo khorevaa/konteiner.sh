@@ -6,7 +6,7 @@ host_variables="${local_storage_location}/host-variables.tfvars"
 secrets="${local_storage_location}/secrets.tfvars"
 branch_name=`git rev-parse --abbrev-ref HEAD`
 state_file="${local_storage_location}/$branch_name.tfstate"
-orchestration=$2
+if [ -z $2 ]; then orchestration="cattle"; else orchestration=$2; fi
 driver=$3
 
 terraform init -plugin-dir $terraform_plugin_location rancher

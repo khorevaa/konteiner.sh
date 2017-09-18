@@ -5,9 +5,7 @@ variable "rancher_environment_name" {}
 variable "rancher_environment_member_id" {}
 variable "rancher_environment_member_type" {}
 variable "rancher_environment_member_role" {}
-variable "orchestration" { default = "cattle" }
-
-
+variable "orchestration" {}
 
 provider  "rancher" {
   api_url = "${var.rancher_api_url}"
