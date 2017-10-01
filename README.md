@@ -27,7 +27,7 @@ git checkout -b myenvironment
 ./env destroy # Destroy environment
 ````
 
-Files from 'file-templates' will be copied to the following directions if they dont exists:
+Files from 'file-templates' will be copied to the following directories if they dont exists:
 
 * Secrets: '/etc/local.konteiner.sh/secrets.tfvars'
 * Overrides: '/etc/local.konteiner.sh/host-variables.tfvars'
