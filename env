@@ -5,8 +5,8 @@ terraform_plugin_location="${local_storage_location}/terraform-plugins"
 host_variables="${local_storage_location}/host-variables.tfvars"
 secrets="${local_storage_location}/secrets.tfvars"
 branch_name=`git rev-parse --abbrev-ref HEAD`
-state_loctaion="${local_storage_location}/states"
-state_file="${state_location}/$branch_name.tfstate"
+state_location="${local_storage_location}/states"
+state_file="$state_location/$branch_name.tfstate"
 if [ -z $2 ]; then orchestration="cattle"; else orchestration=$2; fi
 driver=$3
 
@@ -23,10 +23,9 @@ function check_template_file {
 }
 
 check_dir $terraform_plugin_location 
-check_dir $state_loctaion
+check_dir $state_location
 check_template_file host-variables.tfvars
 check_template_file secrets.tfvars 
-
 
 terraform init -plugin-dir $terraform_plugin_location rancher
 terraform get rancher
