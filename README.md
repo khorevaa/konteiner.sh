@@ -34,5 +34,7 @@ Files from 'file-templates' will be copied to the following directories if they 
 
 Update these credentials and overrides as needed.
 
+State is currently saved to local file with name <branch>.tfstate here: 
 
+/etc/local.konteiner.sh/states/
 
