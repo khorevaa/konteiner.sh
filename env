@@ -5,9 +5,28 @@ terraform_plugin_location="${local_storage_location}/terraform-plugins"
 host_variables="${local_storage_location}/host-variables.tfvars"
 secrets="${local_storage_location}/secrets.tfvars"
 branch_name=`git rev-parse --abbrev-ref HEAD`
-state_file="${local_storage_location}/$branch_name.tfstate"
+state_loctaion="${local_storage_location}/states"
+state_file="${state_location}/$branch_name.tfstate"
 if [ -z $2 ]; then orchestration="cattle"; else orchestration=$2; fi
 driver=$3
+
+function check_dir {
+  if [ ! -d "$1" ]; then
+    echo "Creating missing $1"
+    mkdir -p "$1"
+  fi
+}
+
+function check_template_file {
+  if [ ! -f "$local_storage_location/$1" ]; then cp file-templates/$1 $local_storage_location; echo "Copied missing host-variables.tfvars to $local_storage_location/$1 (update necessary variables and re run 'env apply')"; fi
+
+}
+
+check_dir $terraform_plugin_location 
+check_dir $state_loctaion
+check_template_file host-variables.tfvars
+check_template_file secrets.tfvars 
+
 
 terraform init -plugin-dir $terraform_plugin_location rancher
 terraform get rancher
