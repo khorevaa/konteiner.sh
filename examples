@@ -1,5 +1,7 @@
 -- hosts.tf:
 
+Creates a host in aws and digitalocean
+
 module "kubernetes-compute" {
   source = "../modules/rancher/host"
   environment_id = "${rancher_environment.environment.id}"
