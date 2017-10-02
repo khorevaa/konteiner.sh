@@ -27,6 +27,7 @@ module "compute-host" {
   }
 }
 
+VMware support will soon be added in the module. It is possible to create hosts on VMware with the terraform-provider-plugin.
 
 -- stacks.tf:
 
