@@ -1,6 +1,6 @@
 # konteiner.sh
 
-konteiner.sh contains a template for creating Rancher environments, and a collection of different Rancher environments through different branches.
+konteiner.sh contains a template for creating Rancher environments, and will contain a collection of different Rancher environments through different branches.
 
 'master' branch holds the latest template with modules to create a Rancher environment based on resources defined. This will be used as base when creating new environments through creating a new branch.
 
