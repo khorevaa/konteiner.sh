@@ -1,8 +1,22 @@
 -- hosts.tf:
 
-Creates a host in aws and digitalocean
+Single provider - creates a host on digitalocean:
 
-module "kubernetes-compute" {
+module "compute-host" {
+  source = "../modules/rancher/host"
+  environment_id = "${rancher_environment.environment.id}"
+  external_driver_vars = "${local.external_driver_vars}"
+  drivers = ["digitalocean"]
+  hostname = "compute"
+  host_labels {
+    compute = "true"
+  }
+}
+
+Multiple providers - creates 2 hosts on aws and 2 hosts on digitalocean
+
+module "compute-host" {
+  host_count = 2
   source = "../modules/rancher/host"
   environment_id = "${rancher_environment.environment.id}"
   external_driver_vars = "${local.external_driver_vars}"
@@ -13,6 +27,7 @@ module "kubernetes-compute" {
   }
 }
 
+VMware support will soon be added in the module. It is possible to create hosts on VMware with the terraform-provider-plugin mentioned in the readme.
 
 -- stacks.tf:
 

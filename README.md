@@ -1,6 +1,6 @@
 # konteiner.sh
 
-konteiner.sh contains a template for creating Rancher environments, and a collection of different Rancher environments through different branches.
+konteiner.sh contains a template for creating Rancher environments, and will contain a collection of different Rancher environments through different branches.
 
 'master' branch holds the latest template with modules to create a Rancher environment based on resources defined. This will be used as base when creating new environments through creating a new branch.
 
@@ -34,7 +34,7 @@ Files from 'file-templates' will be copied to the following directories if they 
 
 Update these credentials and overrides as needed.
 
-State is currently saved to local file with name <branch>.tfstate here: 
+State is currently saved to local file with name ```<branch-name>.tfstate``` here: 
 
 /etc/local.konteiner.sh/states/
 
